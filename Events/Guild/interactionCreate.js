@@ -12,7 +12,7 @@ module.exports = {
 	 */
 	async execute(interaction, client) {
 		const { user, guild, commandName, member, type } = interaction;
-		const guildModel = await GLang.findOne({ guild: interaction.guild.id }, async (err, data) => {
+		await GLang.findOne({ guild: interaction.guild.id }, async (err, data) => {
 			if (!data) {
 				GLang.create({
 					guild: guild.id,
@@ -20,6 +20,7 @@ module.exports = {
 				});
 			}
 		});
+		const guildModel = await GLang.findOne({ guild: interaction.guild.id });
 		const { language } = guildModel;
 
 		if (!guild || user.bot) return;
