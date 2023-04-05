@@ -28,6 +28,7 @@ module.exports = {
 		//! Slash Command Interactions
 		if (type == ApplicationCommand) {
 			const command = client.commands.get(commandName);
+
 			const no_command = new EmbedBuilder().setColor("Red").setDescription(`${client.i18n.get(language, "interaction", "no_command_error")}`);
 			const user_no_perm = new EmbedBuilder().setDescription(
 				`${client.i18n.get(language, "interaction", "user_missing_perm", {

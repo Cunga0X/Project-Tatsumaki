@@ -1,0 +1,35 @@
+## Support Tickets
+support_ticket_title: "Potrebuješ pomoč?"
+support_ticket_message: "Izberi vrsto prijave in izpolni potrebne podatke."
+question_label: "❓ ・ Vprašanje"
+user_label: "👤 ・ Prijava Igralca"
+donation_label: "💵 ・ Donacija"
+support_ticket_placeholder: "--Izberi Kategorijo--"
+setup_error: "⚠️ ・ Napaka, Ticket-System je že bil narejen!"
+setup_success: "✅ ・ Ticket-System uspešno konfiguriran, Sporočilo za prijave je bilo poslano v **`%{channel}`**, nove prijave bodo poslane v **`%{category}`**."
+
+## Tickets Remove
+remove_error: "⚠️ ・ Napaka, Ne najdem **`Ticket Sistema`**!"
+remove_success: "✅ ・ **`Ticket-Sistem`** uspešno odstranjen"
+
+## Support Ticket Manager
+support_manager_message: "Odpri/Zapri Support Prijave"
+support_button_enable: "Odpri"
+support_button_disable: "Zapri"
+support_manager_error: "⚠️ ・ Napaka, Ne najdem **`Support-Ticket Sistema`**!"
+support_manager_success: "✅ ・ **`Support-Ticket-Manager`** uspešno dodan"
+
+## Staff Tickets
+staff_ticket_title: "Si želiš postati član osebja?"
+staff_ticket_message: "Izberi rank za katerega se želiš prijaviti in izpolni potrebne podatke."
+helper_label: "🆘 ・ Pomočnik"
+builder_label: "⚒️ ・ Gradbenik"
+developer_label: "⚙️ ・ Razvijalec"
+staff_ticket_placeholder: "--Izberi Kategorijo--"
+
+## Staff Ticket Manager
+staff_manager_message: "Odpri/Zapri Staff Prijave"
+staff_button_enable: "Odpri"
+staff_button_disable: "Zapri"
+staff_manager_error: "⚠️ ・ Napaka, Ne najdem **`Staff-Ticket Sistema`**!"
+staff_manager_success: "✅ ・ **`Staff-Ticket-Manager`** uspešno dodan"

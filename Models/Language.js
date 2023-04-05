@@ -1,16 +1,8 @@
-const mongoose = require("mongoose");
+const { model, Schema } = require("mongoose");
 
-const CreateLang = mongoose.Schema({
-	guild: {
-		type: String,
-		required: true,
-		unique: true,
-	},
-	language: {
-		type: String,
-		default: "en",
-		required: true,
-	},
+let CreateLang = new Schema({
+	guild: String,
+	language: String,
 });
 
-module.exports = mongoose.model("Language", CreateLang);
+module.exports = model("Language", CreateLang);
