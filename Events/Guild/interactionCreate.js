@@ -1,4 +1,4 @@
-const { Client, CommandInteraction, InteractionType, EmbedBuilder, ModalBuilder, ActionRowBuilder, StringSelectMenuBuilder, TextInputBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { Client, CommandInteraction, InteractionType, EmbedBuilder, ModalBuilder, ActionRowBuilder, StringSelectMenuBuilder, TextInputBuilder, ButtonBuilder, ButtonStyle, TextInputStyle } = require("discord.js");
 const { ApplicationCommand } = InteractionType;
 const Reply = require("../../Systems/Reply");
 const GLang = require("../../Models/Language.js");
@@ -57,6 +57,24 @@ module.exports = {
 		}
 		//! Button Interactions
 		if (interaction.isButton()) {
+			if (customId == "streamer-req") {
+				const modalStreamer = new ModalBuilder().setCustomId("streamer-modal").setTitle(`${client.i18n.get(language, "streams", "modal_title")}`);
+				const name = new TextInputBuilder()
+					.setCustomId("streamer-name")
+					.setRequired(true)
+					.setStyle(TextInputStyle.Short)
+					.setMaxLength(20)
+					.setLabel(`${client.i18n.get(language, "streams", "name_label")}`);
+				const kanal = new TextInputBuilder()
+					.setCustomId("streamer-kanal")
+					.setRequired(true)
+					.setStyle(TextInputStyle.Short)
+					.setLabel(`${client.i18n.get(language, "streams", "channel_label")}`);
+				const fstfield = new ActionRowBuilder().addComponents(name);
+				const secfield = new ActionRowBuilder().addComponents(kanal);
+				modalStreamer.addComponents(fstfield, secfield);
+				await interaction.showModal(modalStreamer);
+			}
 			if (customId == "verify") {
 				const modalVerify = new ModalBuilder().setCustomId("verify-modal").setTitle(`${client.i18n.get(language, "utilities", "verify_modal_title")}`);
 

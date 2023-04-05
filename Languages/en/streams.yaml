@@ -1,0 +1,11 @@
+## Stream request message
+streams_msg_title: "You want to apply for stramer role?"
+stream_message: "Request a role and input necessary data."
+request_button_label: "Request a Role"
+setup_error: "⚠️ ・ Error, Streaming request already created!"
+setup_success: "✅ ・ SetUp Successfull, message channel : **`%{channel}`**, notifications channel: **`%{notifications}`**"
+
+## Stram request Modal
+modal_title: Apply for Streamer Role
+name_label: "Your name"
+channel_label: "Your YouTube/twitch Channel url"

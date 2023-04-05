@@ -1,0 +1,11 @@
+## Stream request message
+streams_msg_title: "Si želiš pridobiti streamer role?"
+stream_message: "Prijavi se za Rolo in izpolni potrebne podatke."
+request_button_label: "Prijava"
+setup_error: "⚠️ ・ Napaka, Sporočilo za stream requeste že obstaja"
+setup_success: "✅ ・ Uspešno konfigurirano, Sporočilo za prijave je bilo poslano v **`%{channel}`**, nove prijave bodo poslane v **`%{notifications}`**."
+
+## Stram request Modal
+modal_title: Prijavi se za Streamerja
+name_label: "Tvoje ime"
+channel_label: "Tvoj YouTube/Twitch kanal (link)"
