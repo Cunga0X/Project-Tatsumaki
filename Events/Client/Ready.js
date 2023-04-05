@@ -20,7 +20,7 @@ module.exports = {
 			const ping = ws.ping;
 
 			user.setActivity({
-				name: `with Slime`,
+				name: `SloMc`,
 				type: 0,
 			});
 		}, ms("5s"));
