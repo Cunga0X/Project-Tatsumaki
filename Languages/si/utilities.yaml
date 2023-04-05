@@ -2,9 +2,20 @@
 purge_message: "🗑️ ・ Izbrisano **`%{number}`** sporočil."
 
 ## Language Command
-lang_perm: "Potrebuješ `MANAGE_GUILD` dovoljenje za uporabo tega ukaza."
-lang_arg: "Prosim navedi jezik!"
-provide_lang: "Prosim navedi jezike: **`%{languages}`**"
+lang_perm: "⚠️ ・ Potrebuješ `MANAGE_GUILD` dovoljenje za uporabo tega ukaza."
+lang_arg: "⚠️ ・ Prosim navedi jezik!"
+provide_lang: "⚠️ ・ Prosim navedi jezik: **`%{languages}`**"
 lang_set: "🌍 ・ Jezik je bil nastavljen na: **`%{language}`**"
 lang_change: "🌍 ・ Jezik je bil spremenjen v: **`%{language}`**"
-lang_error: "Nekaj je šlo narobe, poskusi znova kasneje."
+lang_error: "⚠️ ・ Nekaj je šlo narobe, poskusi znova kasneje."
+
+## Dont At Command
+
+dont_at_enabled: "🌐 ・ Don't @ **`Vklopljen`**"
+dont_at_disabled: "🌐 ・ Don't @ **`Izklopljen`**"
+
+## Help command
+help_desc: "Izberi Kategorijo"
+help_category_desc: "Izberi kategorijo %{category} da vidiš vse ukaze"
+help_category: "%{category}"
+help_timeout: "```Čas menija pomoči je potekel, poskusite znova uporabiti pomoč z %{prefix}.```"

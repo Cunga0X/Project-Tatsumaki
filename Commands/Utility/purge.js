@@ -2,13 +2,13 @@ const { Client, ChatInputCommandInteraction, AttachmentBuilder, EmbedBuilder } =
 
 module.exports = {
 	name: "purge",
-	description: "Zbriše sporočila",
+	description: "Bulk delete messages.",
 	category: "Utility",
 	UserPerms: ["ManageGuild"],
 	options: [
 		{
-			name: "količina",
-			description: "Izberi kolko sporočil naj bo izbrisano.",
+			name: "number",
+			description: "How much messages to delete?",
 			required: true,
 			type: 4,
 		},
@@ -21,7 +21,7 @@ module.exports = {
 	 */
 	async execute(interaction, client, language) {
 		const { options, channel } = interaction;
-		let number = options.getInteger("količina");
+		let number = options.getInteger("number");
 
 		const embed = new EmbedBuilder().setColor("Blurple").setDescription(
 			`${client.i18n.get(language, "utilities", "purge_message", {
@@ -31,6 +31,9 @@ module.exports = {
 
 		await channel.bulkDelete(number);
 
-		interaction.reply({ embeds: [embed] });
+		const m = await interaction.reply({ embeds: [embed] });
+		setTimeout(() => {
+			m.delete();
+		}, 4000);
 	},
 };

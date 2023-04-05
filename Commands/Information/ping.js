@@ -10,7 +10,6 @@ module.exports = {
 	 * @param {ChatInputCommandInteraction} interaction
 	 */
 	async execute(interaction, client) {
-		await interaction.deferReply;
 		if (client.ws.ping <= 100) {
 			const pingColor = "#5fb041";
 			const embed = new EmbedBuilder()
@@ -18,10 +17,13 @@ module.exports = {
 				.setTitle(`Latency 🏓`)
 				.setDescription(`**API Latency :** ${client.ws.ping} ms\n**Client Ping :** ${Date.now() - interaction.createdTimestamp} ms`);
 
-			await interaction.reply({
+			const m = await interaction.reply({
 				embeds: [embed],
 				ephemeral: true,
 			});
+			setTimeout(() => {
+				m.delete();
+			}, 4000);
 		} else if (client.ws.ping >= 100 && client.ws.ping <= 200) {
 			const pingColor = "#ffdb29";
 			const embed = new EmbedBuilder()
@@ -29,10 +31,13 @@ module.exports = {
 				.setTitle(`Latency 🏓`)
 				.setDescription(`**API Latency :** ${client.ws.ping} ms\n**Client Ping :** ${Date.now() - interaction.createdTimestamp} ms`);
 
-			await interaction.reply({
+			const m = await interaction.reply({
 				embeds: [embed],
 				ephemeral: true,
 			});
+			setTimeout(() => {
+				m.delete();
+			}, 4000);
 		} else {
 			const pingColor = "#ff0000";
 			const embed = new EmbedBuilder()
@@ -40,10 +45,13 @@ module.exports = {
 				.setTitle(`Latency 🏓`)
 				.setDescription(`**API Latency :** ${client.ws.ping} ms\n**Client Ping :** ${Date.now() - interaction.createdTimestamp} ms`);
 
-			await interaction.editReply({
+			const m = await interaction.reply({
 				embeds: [embed],
 				ephemeral: true,
 			});
+			setTimeout(() => {
+				m.delete();
+			}, 4000);
 		}
 	},
 };

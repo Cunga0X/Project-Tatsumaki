@@ -1,4 +1,4 @@
-const { Client, CommandInteraction, InteractionType } = require("discord.js");
+const { Client, CommandInteraction, InteractionType, EmbedBuilder, ButtonInteraction, StringSelectMenuInteraction, ModalSubmitInteraction } = require("discord.js");
 const { ApplicationCommand } = InteractionType;
 const Reply = require("../../Systems/Reply");
 const GLang = require("../../Models/Language.js");
@@ -25,16 +25,37 @@ module.exports = {
 
 		if (!guild || user.bot) return;
 
-		if (type !== ApplicationCommand) return;
+		//! Slash Command Interactions
+		if (type == ApplicationCommand) {
+			const command = client.commands.get(commandName);
+			const no_command = new EmbedBuilder().setColor("Red").setDescription(`${client.i18n.get(language, "interaction", "no_command_error")}`);
+			const user_no_perm = new EmbedBuilder().setDescription(
+				`${client.i18n.get(language, "interaction", "user_missing_perm", {
+					user_permission: command.UserPerms,
+				})}`,
+			);
+			const bot_no_perm = new EmbedBuilder().setColor("Red").setDescription(
+				`${client.i18n.get(language, "interaction", "bot_missing_perm", {
+					bot_permission: command.BotPerms,
+				})}`,
+			);
 
-		const command = client.commands.get(commandName);
+			if (!command) return interaction.reply({ embeds: [no_command], ephemeral: true }) && client.commands.delete(commandName);
 
-		if (!command) return Reply(interaction, Error, `Error!`, true) && client.commands.delete(commandName);
+			if (command.UserPerms && command.UserPerms.length !== 0) if (!member.permissions.has(command.UserPerms)) return interaction.reply({ embeds: [user_no_perm], ephemeral: true });
 
-		if (command.UserPerms && command.UserPerms.length !== 0) if (!member.permissions.has(command.UserPerms)) return Reply(interaction, ErrorA, `Potrebuješ \`${command.UserPerms.join(", ")}\` dovoljenje(a) za uporabo tega ukaza!`, true);
+			if (command.BotPerms && command.BotPerms.length !== 0) if (!guild.members.me.permissions.has(command.BotPerms)) return interaction.reply({ embeds: [bot_no_perm], ephemeral: true });
 
-		if (command.BotPerms && command.BotPerms.length !== 0) if (!guild.members.me.permissions.has(command.BotPerms)) return Reply(interaction, ErrorA, `Potrebujem \`${command.BotPerms.join(", ")}\` dovoljenje(a) za uporabo tega ukaza!`, true);
-
-		command.execute(interaction, client, language);
+			command.execute(interaction, client, language);
+		}
+		//! Button Interactions
+		if (type == ButtonInteraction) {
+		}
+		//! String Menu Interactions
+		if (type == StringSelectMenuInteraction) {
+		}
+		//! Modal Submit Interactions
+		if (type == ModalSubmitInteraction) {
+		}
 	},
 };

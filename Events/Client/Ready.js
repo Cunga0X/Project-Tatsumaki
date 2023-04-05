@@ -17,10 +17,8 @@ module.exports = {
 		client.player.init(user.id);
 
 		setInterval(() => {
-			const ping = ws.ping;
-
 			user.setActivity({
-				name: `SloMc`,
+				name: `slomc.si`,
 				type: 0,
 			});
 		}, ms("5s"));
