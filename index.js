@@ -55,6 +55,7 @@ for (let k in interfaces) {
 		}
 	}
 }
+console.log("Addresses:", addresses);
 
 let token = DEV_TOKEN;
 if (addresses.includes(HOST_IP)) {
