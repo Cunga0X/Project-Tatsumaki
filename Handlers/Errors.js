@@ -14,7 +14,11 @@ module.exports = async (client) => {
 		if (!Channel) return;
 
 		Channel.send({
-			embeds: [Embed.setDescription("**Unhandled Rejection/Catch:\n\n** ```" + reason + "```").setTitle(`Error Encountered`)],
+			embeds: [
+				Embed.setDescription("**Unhandled Rejection/Catch:\n\n** ```" + reason + "```")
+					.setTitle(`Error Encountered`)
+					.setFooter("⚠️ Anti-Crash System"),
+			],
 		});
 	});
 
@@ -25,7 +29,11 @@ module.exports = async (client) => {
 		if (!Channel) return;
 
 		Channel.send({
-			embeds: [Embed.setDescription("**Uncaught Exception/Catch:\n\n** ```" + err + "\n\n" + origin.toString() + "```").setTitle(`Error Encountered`)],
+			embeds: [
+				Embed.setDescription("**Uncaught Exception/Catch:\n\n** ```" + err + "\n\n" + origin.toString() + "```")
+					.setTitle(`Error Encountered`)
+					.setFooter("⚠️ Anti-Crash System"),
+			],
 		});
 	});
 
@@ -36,7 +44,11 @@ module.exports = async (client) => {
 		if (!Channel) return;
 
 		Channel.send({
-			embeds: [Embed.setDescription("**Uncaught Exception/Catch (MONITOR):\n\n** ```" + err + "\n\n" + origin.toString() + "```").setTitle(`Error Encountered`)],
+			embeds: [
+				Embed.setDescription("**Uncaught Exception/Catch (MONITOR):\n\n** ```" + err + "\n\n" + origin.toString() + "```")
+					.setTitle(`Error Encountered`)
+					.setFooter("⚠️ Anti-Crash System"),
+			],
 		});
 	});
 };
