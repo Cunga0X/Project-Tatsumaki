@@ -4,7 +4,8 @@ const { promisify } = require("util");
 const { glob } = require("glob");
 const PG = promisify(glob);
 const Ascii = require("ascii-table");
-const config = require("./config.json");
+const config = require("./config.js");
+const { I18n } = require("locale-parser");
 
 const { Channel, GuildMember, Message, Reaction, ThreadMember, User, GuildScheduledEvent } = Partials;
 const nodes = require("./Systems/Nodes");
@@ -25,6 +26,8 @@ client.player = new Manager({
 		if (guild) guild.shard.send(payload);
 	},
 });
+
+client.i18n = new I18n(config.LANGUAGE);
 
 client.on("raw", (d) => client.player.updateVoiceState(d));
 

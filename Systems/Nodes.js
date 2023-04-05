@@ -1,4 +1,4 @@
-const { NODE_HOST, NODE_PORT, NODE_PASS } = require("../config.json");
+const { NODE_HOST, NODE_PORT, NODE_PASS } = require("../config.js");
 const nodes = [
 	{
 		name: "Lavalink",

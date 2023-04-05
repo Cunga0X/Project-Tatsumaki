@@ -1,0 +1,10 @@
+## Purge Command
+purge_message: "🗑️ ・ Izbrisano **`%{number}`** sporočil."
+
+## Language Command
+lang_perm: "Potrebuješ `MANAGE_GUILD` dovoljenje za uporabo tega ukaza."
+lang_arg: "Prosim navedi jezik!"
+provide_lang: "Prosim navedi jezike: `%{languages}`"
+lang_set: "🌍 ・ Jezik je bil nastavljen na: `%{language}`"
+lang_change: "🌍 ・ Jezik je bil spremenjen v: `%{language}`"
+lang_error: "Nekaj je šlo narobe, poskusi znova kasneje."

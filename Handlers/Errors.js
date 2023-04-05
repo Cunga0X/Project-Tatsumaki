@@ -1,5 +1,5 @@
 const { Client, EmbedBuilder } = require("discord.js");
-const ChannelID = require("../config.json");
+const ChannelID = require("../config.js");
 
 /**
  * @param {Client} client

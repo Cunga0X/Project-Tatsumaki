@@ -1,7 +1,7 @@
 const { Client } = require("discord.js");
 const ms = require("ms");
 const mongoose = require("mongoose");
-const { MONGO_DB } = require("../../config.json");
+const { MONGO_DB } = require("../../config.js");
 const chalk = require("chalk");
 const express = require("express");
 
