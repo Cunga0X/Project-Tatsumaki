@@ -1,4 +1,4 @@
-const { Client, ActivityType } = require("discord.js");
+const { Client } = require("discord.js");
 const ms = require("ms");
 const mongoose = require("mongoose");
 const { MONGO_DB } = require("../../config.json");
@@ -61,8 +61,11 @@ module.exports = {
 				useUnifiedTopology: true,
 			})
 			.then(() => {
-				console.log(chalk.green("Connected to MongoDB!"));
+				console.log(chalk.green("Connected to MongoDB"));
 				console.log(chalk.green(`\n${user.tag} is now online!`));
+			})
+			.catch((err) => {
+				console.error(chalk.red(`Failed to connect to MongoDB: ${err}`));
 			});
 	},
 };
