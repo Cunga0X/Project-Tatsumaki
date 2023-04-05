@@ -19,3 +19,11 @@ help_desc: "Please Select Category Menu!"
 help_category_desc: "Select the %{category} to see all commands."
 help_category: "%{category}"
 help_timeout: "```Help Menu timed out try using %{prefix}help again.```"
+
+## Verification Modal
+verify_modal_title: "Verification"
+verify_modal_label: "Enter your code"
+
+## Questionnaire Modal
+questionnaire_modal_title: "Questionnaire"
+questionnaire_modal_label: "Your Answer"

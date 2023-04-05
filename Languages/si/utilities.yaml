@@ -19,3 +19,11 @@ help_desc: "Izberi Kategorijo"
 help_category_desc: "Izberi kategorijo %{category} da vidiš vse ukaze"
 help_category: "%{category}"
 help_timeout: "```Čas menija pomoči je potekel, znova uporabiti %{prefix}pomoč.```"
+
+## Verification Modal
+verify_modal_title: "Verifikacija"
+verify_modal_label: "Vnesi svojo kodo"
+
+## Questionnaire Modal
+questionnaire_modal_title: "Vprašalnik"
+questionnaire_modal_label: "Vaš odgovor"

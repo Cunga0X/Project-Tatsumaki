@@ -18,6 +18,8 @@ support_button_enable: "Odpri"
 support_button_disable: "Zapri"
 support_manager_error: "⚠️ ・ Napaka, Ne najdem **`Support-Ticket Sistema`**!"
 support_manager_success: "✅ ・ **`Support-Ticket-Manager`** uspešno dodan"
+support_manager_on: "✅ ・ Support-Tickets Turned **`On`**"
+support_manager_off: "✅ ・ Support-Tickets Turned **`Off`**"
 
 ## Staff Tickets
 staff_ticket_title: "Si želiš postati član osebja?"

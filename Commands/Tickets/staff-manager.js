@@ -48,10 +48,16 @@ module.exports = {
 				});
 			} else {
 				const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "tickets", "staff_manager_error")}`);
-				interaction.reply({ embeds: [embed], ephemeral: true });
+				const m = await interaction.reply({ embeds: [embed], ephemeral: true });
+				setTimeout(() => {
+					m.delete();
+				}, 4000);
 			}
 		});
 		const embeds = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "tickets", "staff_manager_success")}`);
-		interaction.reply({ embeds: [embeds], ephemeral: true });
+		const msg = await interaction.reply({ embeds: [embeds], ephemeral: true });
+		setTimeout(() => {
+			msg.delete();
+		}, 4000);
 	},
 };
