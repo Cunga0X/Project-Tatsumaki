@@ -8,6 +8,7 @@ const Suggestion = require("../../Models/Suggestion");
 const verifications = require("../../Models/Verification");
 const Vprasalnik = require("../../Models/Vprasalnik");
 const Ticket = require("../../Models/Ticket");
+const Streamer = require("../../Models/Streamer");
 
 module.exports = {
 	name: "interactionCreate",
@@ -820,6 +821,56 @@ module.exports = {
 		//! Modal Submit Interactions
 		if (interaction.isModalSubmit) {
 			switch (customId) {
+				case "streamer-modal":
+					Streamer.findOne({ Guild: guild.id, RequestID: "streamer-request" }, async (err, data) => {
+						if (err) {
+							throw err;
+						}
+						if (!data) {
+							const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "modal_error")}`);
+							const m = await interaction.reply({ embeds: [embed], ephemeral: true });
+							setTimeout(() => {
+								m.delete();
+							}, 4000);
+						}
+						const notifyChannel = data.Notify;
+						const name = fields.getTextInputValue("streamer-name");
+						const kanal = fields.getTextInputValue("streamer-kanal");
+
+						const buttons = new ActionRowBuilder().addComponents(
+							new ButtonBuilder()
+								.setCustomId("streamer-accept")
+								.setStyle(ButtonStyle.Success)
+								.setLabel(`${client.i18n.get(language, "streams", "streamer_accept_button")}`),
+							new ButtonBuilder()
+								.setCustomId("streamer-deny")
+								.setStyle(ButtonStyle.Danger)
+								.setLabel(`${client.i18n.get(language, "streams", "streamer_deny_button")}`),
+						);
+						const embed = new EmbedBuilder()
+							.setColor("LuminousVividPink")
+							.setTitle(`${client.i18n.get(language, "streams", "streamer_request_title")}`)
+							.addFields({ name: `Ime:`, value: `${name}` })
+							.addFields({ name: `Kanal:`, value: `${kanal}` })
+							.addFields({ name: `Discord:`, value: `${interaction.user.tag}` });
+						try {
+							const channel = client.channels.cache.get(notifyChannel);
+							channel.send({ embeds: [embed], components: [buttons] });
+						} catch (err) {
+							const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
+							const m = await interaction.reply({ embeds: [embed], ephemeral: true });
+							setTimeout(() => {
+								m.delete();
+							}, 4000);
+							throw err;
+						}
+						const embeds = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_request_success")}`);
+						const ms = await interaction.reply({ embeds: [embeds], ephemeral: true });
+						setTimeout(() => {
+							ms.delete();
+						}, 4000);
+					});
+					break;
 				case "TicketQuestionModal":
 					const question = fields.getTextInputValue("question");
 

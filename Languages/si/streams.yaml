@@ -9,3 +9,12 @@ setup_success: "✅ ・ Uspešno konfigurirano, Sporočilo za prijave je bilo po
 modal_title: Prijavi se za Streamerja
 name_label: "Tvoje ime"
 channel_label: "Tvoj YouTube/Twitch kanal (link)"
+
+## Streamer Request Message
+streamer_accept_button: "Sprejmi"
+streamer_deny_button: "Zavrni"
+streamer_request_title: "🔴 Nova Streamer Prijava"
+
+## Streamer Request Submit
+streamer_request_error: "⚠️ ・ Napaka, Nekaj je šlo narobe, poskusi znova kasneje!"
+streamer_request_success: "✅ ・ Tvoja Streamer prijava je bila uspešno oddana"

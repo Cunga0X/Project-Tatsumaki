@@ -9,3 +9,13 @@ setup_success: "✅ ・ SetUp Successfull, message channel : **`%{channel}`**, n
 modal_title: Apply for Streamer Role
 name_label: "Your name"
 channel_label: "Your YouTube/twitch Channel url"
+modal_error: "⚠️ ・ Error, Streaming request not found!"
+
+## Streamer Request Message
+streamer_accept_button: "Accpet"
+streamer_deny_button: "Deny"
+streamer_request_title: "🔴 New Streamer request"
+
+## Streamer Request Submit
+streamer_request_error: "⚠️ ・ Error, Someting went wrong, please try again later!"
+streamer_request_success: "✅ ・ Your Streamer Request has ben sent successfully"
