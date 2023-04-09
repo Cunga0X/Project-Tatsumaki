@@ -19,3 +19,6 @@ streamer_request_title: "🔴 New Streamer request"
 ## Streamer Request Submit
 streamer_request_error: "⚠️ ・ Error, Someting went wrong, please try again later!"
 streamer_request_success: "✅ ・ Your Streamer Request has ben sent successfully"
+## Streamer Buttons
+streamer_accepted_msg: "Welcome, please read the rules"
+streamer_accepted_reply: "Streamer **`%name`** accepted"

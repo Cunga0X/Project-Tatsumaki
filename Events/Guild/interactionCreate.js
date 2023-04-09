@@ -9,6 +9,7 @@ const verifications = require("../../Models/Verification");
 const Vprasalnik = require("../../Models/Vprasalnik");
 const Ticket = require("../../Models/Ticket");
 const Streamer = require("../../Models/Streamer");
+const config = require("../../config");
 
 module.exports = {
 	name: "interactionCreate",
@@ -58,6 +59,54 @@ module.exports = {
 		}
 		//! Button Interactions
 		if (interaction.isButton()) {
+			if (customId == "streamer-accept" || customId == "streamer-deny") {
+				switch (customId) {
+					case "streamer-accept":
+						Streamer.findOne({ Guild: guild.id, RequestID: message.id }, async (err, data) => {
+							if (err) {
+								throw err;
+							}
+							if (!data) {
+								const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
+								const msg = await interaction.reply({ embeds: [embed], ephemeral: true });
+								setTimeout(() => {
+									msg.delete();
+								}, 4000);
+							}
+							if (data) {
+								try {
+									const user = data.User;
+									const channelNotification = config.STREAMER_WELCOME;
+									const streamerRole = config.STREAMER;
+									await guild.roles.fetch();
+									user.roles.add(streamerRole);
+									const embed = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_msg")}`);
+									await channelNotification.send({ content: `<@!${user}>`, embeds: [embed] });
+									const embeda = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_reply")}`);
+									const m = interaction.reply({ embeds: [embeda], ephemeral: true });
+									setTimeout(() => {
+										m.delete();
+									}, 4000);
+								} catch (err) {
+									const embed = new EmbedBuilder().setColor("Yellow").setDescription(
+										`${client.i18n.get(language, "streams", "streamer_request_error", {
+											name: user.name,
+										})}`,
+									);
+									const msg = await interaction.reply({ embeds: [embed], ephemeral: true });
+									setTimeout(() => {
+										msg.delete();
+									}, 4000);
+								} finally {
+									return;
+								}
+							}
+						});
+						break;
+					case "streamer-deny":
+						break;
+				}
+			}
 			if (customId == "streamer-req") {
 				const modalStreamer = new ModalBuilder().setCustomId("streamer-modal").setTitle(`${client.i18n.get(language, "streams", "modal_title")}`);
 				const name = new TextInputBuilder()
@@ -855,7 +904,8 @@ module.exports = {
 							.addFields({ name: `Discord:`, value: `${interaction.user.tag}` });
 						try {
 							const channel = client.channels.cache.get(notifyChannel);
-							channel.send({ embeds: [embed], components: [buttons] });
+							const m = await channel.send({ embeds: [embed], components: [buttons] });
+							Streamer.create({ Guild: guild.id, Notify: channel.id, RequestID: m.id });
 						} catch (err) {
 							const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
 							const m = await interaction.reply({ embeds: [embed], ephemeral: true });

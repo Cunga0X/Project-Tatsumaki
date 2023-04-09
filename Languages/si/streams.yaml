@@ -18,3 +18,6 @@ streamer_request_title: "🔴 Nova Streamer Prijava"
 ## Streamer Request Submit
 streamer_request_error: "⚠️ ・ Napaka, Nekaj je šlo narobe, poskusi znova kasneje!"
 streamer_request_success: "✅ ・ Tvoja Streamer prijava je bila uspešno oddana"
+##
+streamer_accepted_msg: "Dobrodošel med Streamerje, prosim preberi si pravila, v primeru, da se jih ne držis se rola Streamer odstrani."
+streamer_accepted_reply: "Streamer **`%name`** sprejet"
