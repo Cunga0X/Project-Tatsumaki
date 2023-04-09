@@ -77,7 +77,7 @@ module.exports = {
 							if (data) {
 								try {
 									const user = guild.members.cache.get(data.User);
-									const channelNotification = config.STREAMER_WELCOME;
+									const channelNotification = client.channels.cache.get(config.STREAMER_WELCOME);
 									const streamerRole = config.STREAMER;
 									await guild.roles.fetch();
 									user.roles.add(streamerRole);
