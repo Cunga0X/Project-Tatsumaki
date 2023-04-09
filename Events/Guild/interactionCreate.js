@@ -76,13 +76,13 @@ module.exports = {
 							}
 							if (data) {
 								try {
-									const user = data.User;
+									const userreq = data.User;
 									const channelNotification = config.STREAMER_WELCOME;
 									const streamerRole = config.STREAMER;
 									await guild.roles.fetch();
-									user.roles.add(streamerRole);
+									userreq.roles.add(streamerRole);
 									const embed = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_msg")}`);
-									await channelNotification.send({ content: `<@!${user}>`, embeds: [embed] });
+									await channelNotification.send({ content: `<@!${userreq}>`, embeds: [embed] });
 									const embeda = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_reply")}`);
 									const m = interaction.reply({ embeds: [embeda], ephemeral: true });
 									setTimeout(() => {
