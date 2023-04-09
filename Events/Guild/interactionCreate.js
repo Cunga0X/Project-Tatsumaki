@@ -88,8 +88,14 @@ module.exports = {
 											name: user.name,
 										})}`,
 									);
+									const channel = data.Notify;
 									const message = data.RequestID;
-									message.edit({ components: [] });
+									guild.channels.cache
+										.get(channel)
+										.messages.fetch(message)
+										.then((msg) => {
+											msg.edit({ components: [] });
+										});
 
 									const m = await interaction.reply({ embeds: [embeda], ephemeral: true });
 									setTimeout(() => {
