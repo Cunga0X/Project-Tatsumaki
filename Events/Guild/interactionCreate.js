@@ -76,7 +76,7 @@ module.exports = {
 							}
 							if (data) {
 								try {
-									const user = User.data;
+									const user = data.User;
 									const channelNotification = config.STREAMER_WELCOME;
 									const streamerRole = config.STREAMER;
 									await guild.roles.fetch();
@@ -907,7 +907,7 @@ module.exports = {
 						try {
 							const channel = client.channels.cache.get(notifyChannel);
 							const m = await channel.send({ embeds: [embed], components: [buttons] });
-							Streamer.create({ Guild: guild.id, Notify: channel.id, RequestID: m.id });
+							Streamer.create({ Guild: guild.id, Notify: channel.id, RequestID: m.id, User: interaction.user.id });
 						} catch (err) {
 							const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
 							const m = await interaction.reply({ embeds: [embed], ephemeral: true });
