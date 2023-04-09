@@ -85,7 +85,7 @@ module.exports = {
 									await channelNotification.send({ content: `${user}`, embeds: [embed] });
 									const embeda = new EmbedBuilder().setColor("Green").setDescription(
 										`${client.i18n.get(language, "streams", "streamer_accepted_reply", {
-											name: user,
+											name: user.name,
 										})}`,
 									);
 									const m = await interaction.reply({ embeds: [embeda], ephemeral: true });
