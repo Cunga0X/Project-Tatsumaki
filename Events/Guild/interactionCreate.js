@@ -88,6 +88,9 @@ module.exports = {
 											name: user.name,
 										})}`,
 									);
+									const message = data.RequestID;
+									message.edit({ components: [] });
+
 									const m = await interaction.reply({ embeds: [embeda], ephemeral: true });
 									setTimeout(() => {
 										m.delete();
