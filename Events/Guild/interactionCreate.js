@@ -82,19 +82,19 @@ module.exports = {
 									await guild.roles.fetch();
 									user.roles.add(streamerRole);
 									const embed = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_msg")}`);
-									await channelNotification.send({ content: `<@!${user}>`, embeds: [embed] });
-									const embeda = new EmbedBuilder().setColor("Green").setDescription(`${client.i18n.get(language, "streams", "streamer_accepted_reply")}`);
-									const m = interaction.reply({ embeds: [embeda], ephemeral: true });
+									await channelNotification.send({ content: `<${user}`, embeds: [embed] });
+									const embeda = new EmbedBuilder().setColor("Green").setDescription(
+										`${client.i18n.get(language, "streams", "streamer_accepted_reply", {
+											name: user.name,
+										})}`,
+									);
+									const m = await interaction.reply({ embeds: [embeda], ephemeral: true });
 									setTimeout(() => {
 										m.delete();
 									}, 4000);
 								} catch (err) {
 									console.log(err);
-									const embed = new EmbedBuilder().setColor("Yellow").setDescription(
-										`${client.i18n.get(language, "streams", "streamer_request_error", {
-											name: user.name,
-										})}`,
-									);
+									const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
 									const msg = await interaction.reply({ embeds: [embed], ephemeral: true });
 									setTimeout(() => {
 										msg.delete();
