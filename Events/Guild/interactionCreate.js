@@ -67,6 +67,7 @@ module.exports = {
 								throw err;
 							}
 							if (!data) {
+								console.log("err no data for streamer");
 								const embed = new EmbedBuilder().setColor("Yellow").setDescription(`${client.i18n.get(language, "streams", "streamer_request_error")}`);
 								const msg = await interaction.reply({ embeds: [embed], ephemeral: true });
 								setTimeout(() => {
@@ -88,6 +89,7 @@ module.exports = {
 										m.delete();
 									}, 4000);
 								} catch (err) {
+									console.log(err);
 									const embed = new EmbedBuilder().setColor("Yellow").setDescription(
 										`${client.i18n.get(language, "streams", "streamer_request_error", {
 											name: user.name,
